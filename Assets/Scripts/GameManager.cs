@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Submit") && isGameOver) //for restarting the game after death
+        if (Input.GetButtonDown("Submit") && isGameOver)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
