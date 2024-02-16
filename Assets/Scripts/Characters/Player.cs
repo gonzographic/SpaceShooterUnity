@@ -8,16 +8,19 @@ public class Player : MonoBehaviour
 
     [SerializeField] GameObject laser;
     [SerializeField] GameObject laser2;
+    [SerializeField] GameObject shield;
+
+    public bool haveShield = false;
 
     private Rigidbody2D _rigidbody;
 
     float horizontal;
     float vertical;
-    
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+
     }
 
     private void Update()
@@ -40,5 +43,19 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         _rigidbody.velocity = new Vector2(horizontal * _speed, vertical * _speed);
+    }
+
+    public void ShieldPowerUpOn()
+    {
+        haveShield = true;
+        shield.SetActive(true);
+        StartCoroutine(ShieldPowerUpDownRoutine());
+    }
+
+    public IEnumerator ShieldPowerUpDownRoutine()
+    {
+        yield return new WaitForSeconds(10f);
+        shield.SetActive(false);
+        haveShield = false;
     }
 }

@@ -11,7 +11,7 @@ public class EnemyLaser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,4 +19,15 @@ public class EnemyLaser : MonoBehaviour
     {
         transform.position += new Vector3(laserSpeed, 0, 0) * Time.deltaTime;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GameManager.instance.InitiateGameOver();
+        }
+
+        Destroy(collision.gameObject);
+    }
+
 }
