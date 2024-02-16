@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed;
 
     [SerializeField] GameObject laser;
+    [SerializeField] GameObject laser2;
 
     private Rigidbody2D _rigidbody;
 
@@ -26,9 +27,14 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Instantiate(laser, transform.position, transform.rotation * Quaternion.Euler(0, 0, 90));
+            Instantiate(laser, transform.position, Quaternion.Euler(0, 0, 270));
         }
-        
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            Instantiate(laser2, transform.position, Quaternion.Euler(0, 0, 270));
+        }
+
     }
 
     private void FixedUpdate()
